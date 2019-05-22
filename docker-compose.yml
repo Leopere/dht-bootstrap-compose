@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  bootstrap-dht:
+    image: 'monokal/bootstrap-dht:latest'
+    restart: always
+    ports:
+      - '6881:6881'
+    entrypoint:
+        - '/usr/local/bin/dht-bootstrap'
+        - '0.0.0.0'
+        - '--threads 1'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
